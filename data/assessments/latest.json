@@ -1,0 +1,139 @@
+{
+  "library": "@angular/material",
+  "installedVersion": "22.1.7",
+  "latestVersion": "22.0.0",
+  "fromVersion": "21.0.0",
+  "toVersion": "22.0.0",
+  "changelogSource": "data/releases/CHANGELOG.sample.md",
+  "changeEvents": [
+    {
+      "id": "22-0-0-matlistoption-checkboxposition",
+      "library": "@angular/material",
+      "packageName": "@angular/material",
+      "fromVersion": "21.0.0",
+      "toVersion": "22.0.0",
+      "component": "MatListOption",
+      "changeType": "removed",
+      "severity": "high",
+      "description": "`MatListOption.checkboxPosition` has been removed. use `togglePosition` instead.",
+      "affectedApi": "MatListOption.checkboxPosition",
+      "replacement": "togglePosition",
+      "migrationPath": "Use `togglePosition` instead of `MatListOption.checkboxPosition`.",
+      "sourceUrl": "data/releases/CHANGELOG.sample.md",
+      "evidence": "* `MatListOption.checkboxPosition` has been removed. use `togglePosition` instead.",
+      "confidence": "documented",
+      "autoPatch": true
+    },
+    {
+      "id": "22-0-0-matlistoptioncheckboxposition",
+      "library": "@angular/material",
+      "packageName": "@angular/material",
+      "fromVersion": "21.0.0",
+      "toVersion": "22.0.0",
+      "component": "MatListOptionCheckboxPosition",
+      "changeType": "breaking",
+      "severity": "medium",
+      "description": "`MatListOptionCheckboxPosition` has been renamed to `MatListOptionTogglePosition`.",
+      "affectedApi": "MatListOptionCheckboxPosition",
+      "replacement": "MatListOptionTogglePosition",
+      "migrationPath": "Use `MatListOptionTogglePosition` instead of `MatListOptionCheckboxPosition`.",
+      "sourceUrl": "data/releases/CHANGELOG.sample.md",
+      "evidence": "`MatListOptionCheckboxPosition` has been renamed to `MatListOptionTogglePosition`.",
+      "confidence": "documented",
+      "autoPatch": true
+    },
+    {
+      "id": "22-0-0-appearance-legacy",
+      "library": "@angular/material",
+      "packageName": "@angular/material",
+      "fromVersion": "21.0.0",
+      "toVersion": "22.0.0",
+      "component": "MatFormField",
+      "changeType": "removed",
+      "severity": "high",
+      "description": "`appearance=\"legacy\"` is no longer supported on form fields.",
+      "affectedApi": "appearance=\"legacy\"",
+      "sourceUrl": "data/releases/CHANGELOG.sample.md",
+      "evidence": "* `appearance=\"legacy\"` is no longer supported on form fields.",
+      "confidence": "inferred",
+      "autoPatch": false
+    }
+  ],
+  "usages": [
+    {
+      "project": "ds-migration",
+      "component": "MatListOption",
+      "usageType": "property",
+      "file": "src/fixtures/legacy-form.html",
+      "line": 8,
+      "matchedApi": "MatListOption.checkboxPosition",
+      "codeSnippet": "<mat-list-option checkboxPosition=\"before\">Express shipping</mat-list-option>"
+    },
+    {
+      "project": "ds-migration",
+      "component": "MatFormField",
+      "usageType": "property",
+      "file": "src/fixtures/legacy-form.html",
+      "line": 2,
+      "matchedApi": "appearance=\"legacy\"",
+      "codeSnippet": "<mat-form-field appearance=\"legacy\">"
+    }
+  ],
+  "impacts": [
+    {
+      "changeId": "22-0-0-matlistoption-checkboxposition",
+      "risk": "medium",
+      "action": "patch",
+      "usages": [
+        {
+          "project": "ds-migration",
+          "component": "MatListOption",
+          "usageType": "property",
+          "file": "src/fixtures/legacy-form.html",
+          "line": 8,
+          "matchedApi": "MatListOption.checkboxPosition",
+          "codeSnippet": "<mat-list-option checkboxPosition=\"before\">Express shipping</mat-list-option>"
+        }
+      ],
+      "uncertainty": null
+    },
+    {
+      "changeId": "22-0-0-matlistoptioncheckboxposition",
+      "risk": "none",
+      "action": "none",
+      "usages": []
+    },
+    {
+      "changeId": "22-0-0-appearance-legacy",
+      "risk": "high",
+      "action": "review",
+      "usages": [
+        {
+          "project": "ds-migration",
+          "component": "MatFormField",
+          "usageType": "property",
+          "file": "src/fixtures/legacy-form.html",
+          "line": 2,
+          "matchedApi": "appearance=\"legacy\"",
+          "codeSnippet": "<mat-form-field appearance=\"legacy\">"
+        }
+      ],
+      "uncertainty": "No documented replacement token was found in the changelog. A human must apply the migration path if one exists."
+    }
+  ],
+  "patches": [
+    {
+      "file": "src/fixtures/legacy-form.html",
+      "description": "Replace checkboxPosition with togglePosition",
+      "find": "checkboxPosition",
+      "replace": "togglePosition",
+      "sourceEvidence": "* `MatListOption.checkboxPosition` has been removed. use `togglePosition` instead.",
+      "applied": false
+    }
+  ],
+  "summary": "Found 3 documented Angular Material change(s) through 22.0.0. 2 change(s) match source usages in this repository. Installed package version is 22.1.7.",
+  "prRequired": true,
+  "prCreated": false,
+  "prUrl": null,
+  "prReason": "PR creation was not requested."
+}

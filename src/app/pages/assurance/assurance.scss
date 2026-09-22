@@ -1,0 +1,48 @@
+.page h1 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.header p,
+.summary {
+  margin: 0 0 16px;
+  max-width: 640px;
+}
+
+.error {
+  color: var(--mat-sys-error);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 0 0 16px;
+}
+
+.meta dt {
+  font: var(--mat-sys-label-small);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.meta dd {
+  margin: 4px 0 0;
+  font: var(--mat-sys-title-medium);
+}
+
+.grid {
+  width: 100%;
+}
+
+h2 {
+  font: var(--mat-sys-title-large);
+  margin: 24px 0 12px;
+}

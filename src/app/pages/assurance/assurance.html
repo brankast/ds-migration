@@ -1,0 +1,78 @@
+<section class="page">
+  <div class="header">
+    <div>
+      <h1>Assurance</h1>
+      <p>Latest Angular Material changelog scan for this app. No local mapping rules.</p>
+    </div>
+    <button matButton="outlined" type="button" (click)="reload()">Reload</button>
+  </div>
+
+  @if (assessmentService.loading()) {
+    <p>Loading assessment…</p>
+  } @else if (assessmentService.error(); as message) {
+    <p class="error">{{ message }}</p>
+  } @else if (assessmentService.assessment(); as assessment) {
+    <dl class="meta">
+      <div>
+        <dt>Installed</dt>
+        <dd>{{ assessment.installedVersion }}</dd>
+      </div>
+      <div>
+        <dt>Latest changelog</dt>
+        <dd>{{ assessment.latestVersion }}</dd>
+      </div>
+      <div>
+        <dt>Range</dt>
+        <dd>{{ assessment.fromVersion }} → {{ assessment.toVersion }}</dd>
+      </div>
+      <div>
+        <dt>Draft PR</dt>
+        <dd>{{ assessment.prRequired ? 'Proposed' : 'Not required' }}</dd>
+      </div>
+    </dl>
+
+    <p class="summary">{{ assessment.summary }}</p>
+
+    @if (assessment.prUrl) {
+      <p>
+        <a [href]="assessment.prUrl" target="_blank" rel="noreferrer">Open draft pull request</a>
+      </p>
+    }
+
+    <h2>Affected parts</h2>
+    @if (assessmentService.affectedImpacts().length === 0) {
+      <p>No matching usages in this repository.</p>
+    } @else {
+      <table mat-table [dataSource]="assessmentService.affectedImpacts()" class="grid">
+        <ng-container matColumnDef="component">
+          <th mat-header-cell *matHeaderCellDef>Component</th>
+          <td mat-cell *matCellDef="let impact">
+            {{ eventFor(impact.changeId)?.component ?? impact.changeId }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="api">
+          <th mat-header-cell *matHeaderCellDef>API</th>
+          <td mat-cell *matCellDef="let impact">
+            {{ eventFor(impact.changeId)?.affectedApi }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let impact">
+            <mat-chip-set>
+              <mat-chip>{{ impact.action }}</mat-chip>
+            </mat-chip-set>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="files">
+          <th mat-header-cell *matHeaderCellDef>Files</th>
+          <td mat-cell *matCellDef="let impact">
+            {{ impact.usages.length }}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+      </table>
+    }
+  }
+</section>
