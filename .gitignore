@@ -1,0 +1,8 @@
+.angular/
+dist/
+node_modules/
+.DS_Store
+*.log
+coverage/
+data/releases/CHANGELOG.cache.md
+data/releases/latest-events.json

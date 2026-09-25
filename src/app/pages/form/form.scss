@@ -1,0 +1,16 @@
+.page h1 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 8px;
+}
+
+.page p {
+  max-width: 640px;
+  margin: 0 0 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+}

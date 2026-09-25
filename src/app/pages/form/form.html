@@ -1,0 +1,26 @@
+<section class="page">
+  <h1>Checkout</h1>
+  <p>
+    This is the Angular Material app under watch. The CLI reads the official
+    Material changelog — there is no local rule file — and reports when a
+    breaking API appears in this repo.
+  </p>
+  <p>
+    APIs that no longer compile are kept in
+    <code>src/fixtures/legacy-form.html</code> so they can still be detected.
+  </p>
+
+  <form class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" />
+    </mat-form-field>
+
+    <mat-selection-list [(ngModel)]="shipping" name="shipping">
+      <mat-list-option value="standard" togglePosition="before">Standard shipping</mat-list-option>
+      <mat-list-option value="express" togglePosition="before">Express shipping</mat-list-option>
+    </mat-selection-list>
+
+    <button matButton="filled" type="button">Continue</button>
+  </form>
+</section>
