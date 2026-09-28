@@ -4,7 +4,7 @@
 - Versions: `21.0.0` → `22.0.0`
 - Action: `patch`
 - Risk: `medium`
-- Source: data/releases/CHANGELOG.sample.md
+- Source: https://raw.githubusercontent.com/angular/components/main/CHANGELOG.md
 
 ## Evidence
 
